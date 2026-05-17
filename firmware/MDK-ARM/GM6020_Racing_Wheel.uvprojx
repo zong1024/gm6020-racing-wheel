@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<Project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="project_projx.xsd">
+  <SchemaVersion>2.1</SchemaVersion>
+  <Header>### uVision Project, (C) Keil Software</Header>
+  <Targets>
+    <Target>
+      <TargetName>GM6020_Racing_Wheel</TargetName>
+      <ToolsetNumber>0x4</ToolsetNumber>
+      <ToolsetName>ARM-ADS</ToolsetName>
+      <pCCUsed>6160000::V6.16::ARMCLANG</pCCUsed>
+      <TargetOption>
+        <TargetCommonOption>
+          <Device>STM32F427VGTx</Device>
+          <Vendor>STMicroelectronics</Vendor>
+          <Cpu>IRAM(0x20000000-0x2003FFFF) IROM(0x08000000-0x080FFFFF) CLOCK(12000000) CPUTYPE("Cortex-M4") FPU2</Cpu>
+          <OutputDirectory>.\Objects\</OutputDirectory>
+          <ListingPath>.\Listings\</ListingPath>
+          <OutputName>GM6020_Racing_Wheel</OutputName>
+          <CreateExecutable>1</CreateExecutable>
+          <DebugInformation>1</DebugInformation>
+          <BrowseInformation>1</BrowseInformation>
+        </TargetCommonOption>
+        <TargetArmAds>
+          <ArmAdsMisc>
+            <AdsCpuType>"Cortex-M4"</AdsCpuType>
+            <RvdsVP>0</RvdsVP>
+          </ArmAdsMisc>
+          <Cads>
+            <interw>1</interw>
+            <Optim>1</Optim>
+            <VariousControls>
+              <Define>USE_HAL_DRIVER,STM32F427xx</Define>
+              <IncludePath>..\include;..\STM32CubeMX\Core\Inc;..\STM32CubeMX\Drivers\STM32F4xx_HAL_Driver\Inc;..\STM32CubeMX\Drivers\CMSIS\Device\ST\STM32F4xx\Include;..\STM32CubeMX\Drivers\CMSIS\Include</IncludePath>
+            </VariousControls>
+          </Cads>
+        </TargetArmAds>
+      </TargetOption>
+      <Groups>
+        <Group>
+          <GroupName>Application</GroupName>
+          <Files>
+            <File><FileName>main.c</FileName><FileType>1</FileType><FilePath>..\src\main.c</FilePath></File>
+            <File><FileName>pid.c</FileName><FileType>1</FileType><FilePath>..\src\pid.c</FilePath></File>
+            <File><FileName>gm6020.c</FileName><FileType>1</FileType><FilePath>..\src\gm6020.c</FilePath></File>
+            <File><FileName>wheel_app.c</FileName><FileType>1</FileType><FilePath>..\src\wheel_app.c</FilePath></File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Startup</GroupName>
+          <Files>
+            <File><FileName>startup_stm32f427xx.s</FileName><FileType>2</FileType><FilePath>..\STM32CubeMX\MDK-ARM\startup_stm32f427xx.s</FilePath></File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>CubeMX Core</GroupName>
+          <Files>
+            <File><FileName>gpio.c</FileName><FileType>1</FileType><FilePath>..\STM32CubeMX\Core\Src\gpio.c</FilePath></File>
+            <File><FileName>can.c</FileName><FileType>1</FileType><FilePath>..\STM32CubeMX\Core\Src\can.c</FilePath></File>
+            <File><FileName>usart.c</FileName><FileType>1</FileType><FilePath>..\STM32CubeMX\Core\Src\usart.c</FilePath></File>
+            <File><FileName>stm32f4xx_hal_msp.c</FileName><FileType>1</FileType><FilePath>..\STM32CubeMX\Core\Src\stm32f4xx_hal_msp.c</FilePath></File>
+            <File><FileName>stm32f4xx_it.c</FileName><FileType>1</FileType><FilePath>..\STM32CubeMX\Core\Src\stm32f4xx_it.c</FilePath></File>
+            <File><FileName>system_stm32f4xx.c</FileName><FileType>1</FileType><FilePath>..\STM32CubeMX\Core\Src\system_stm32f4xx.c</FilePath></File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>STM32F4xx HAL Driver</GroupName>
+          <Files>
+            <File><FileName>stm32f4xx_hal.c</FileName><FileType>1</FileType><FilePath>..\STM32CubeMX\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal.c</FilePath></File>
+            <File><FileName>stm32f4xx_hal_cortex.c</FileName><FileType>1</FileType><FilePath>..\STM32CubeMX\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_cortex.c</FilePath></File>
+            <File><FileName>stm32f4xx_hal_rcc.c</FileName><FileType>1</FileType><FilePath>..\STM32CubeMX\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_rcc.c</FilePath></File>
+            <File><FileName>stm32f4xx_hal_rcc_ex.c</FileName><FileType>1</FileType><FilePath>..\STM32CubeMX\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_rcc_ex.c</FilePath></File>
+            <File><FileName>stm32f4xx_hal_flash.c</FileName><FileType>1</FileType><FilePath>..\STM32CubeMX\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_flash.c</FilePath></File>
+            <File><FileName>stm32f4xx_hal_flash_ex.c</FileName><FileType>1</FileType><FilePath>..\STM32CubeMX\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_flash_ex.c</FilePath></File>
+            <File><FileName>stm32f4xx_hal_gpio.c</FileName><FileType>1</FileType><FilePath>..\STM32CubeMX\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_gpio.c</FilePath></File>
+            <File><FileName>stm32f4xx_hal_dma.c</FileName><FileType>1</FileType><FilePath>..\STM32CubeMX\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_dma.c</FilePath></File>
+            <File><FileName>stm32f4xx_hal_pwr.c</FileName><FileType>1</FileType><FilePath>..\STM32CubeMX\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_pwr.c</FilePath></File>
+            <File><FileName>stm32f4xx_hal_pwr_ex.c</FileName><FileType>1</FileType><FilePath>..\STM32CubeMX\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_pwr_ex.c</FilePath></File>
+            <File><FileName>stm32f4xx_hal_can.c</FileName><FileType>1</FileType><FilePath>..\STM32CubeMX\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_can.c</FilePath></File>
+            <File><FileName>stm32f4xx_hal_uart.c</FileName><FileType>1</FileType><FilePath>..\STM32CubeMX\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_uart.c</FilePath></File>
+          </Files>
+        </Group>
+      </Groups>
+    </Target>
+  </Targets>
+</Project>

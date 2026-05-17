@@ -1,15 +1,23 @@
 # Setup guide
 
-## 1. Firmware
+## 1. Firmware environment
 
-1. Create a Robomaster C / STM32F427 project in STM32CubeMX or your existing board support package.
-2. Enable:
-   - CAN1 at the bus speed used by the GM6020 network (commonly 1 Mbps in DJI ecosystems)
-   - USART3 at 115200 8N1, RX interrupt enabled
-   - 1 ms SysTick
-3. Copy `firmware/include` and `firmware/src` into the generated project, or link the `wheel_app` target from `firmware/CMakeLists.txt`.
-4. Ensure the generated project exposes `hcan1`, `huart3`, `MX_CAN1_Init`, `MX_USART3_UART_Init`, and `SystemClock_Config`.
-5. Flash the board.
+The firmware workflow is now **Keil uVision5 (MDK-ARM) + STM32CubeMX**.
+
+1. In STM32CubeMX, create an `STM32F427VGTx` project and save it under `firmware/STM32CubeMX/`.
+2. Configure CAN1, USART3, the 168 MHz clock tree, and separate peripheral init files as described in `firmware/STM32CubeMX/README.md`.
+3. Generate code for the **MDK-ARM** toolchain.
+4. Open `firmware/MDK-ARM/GM6020_Racing_Wheel.uvprojx` in Keil uVision5.
+5. Build and flash the target with ARM Compiler 6 / armclang.
+
+The Keil project already references the application sources in `firmware/src/` and `firmware/include/`. CubeMX supplies the generated HAL headers, peripheral init files, interrupt handlers, and startup support under `firmware/STM32CubeMX/`.
+
+Expected CubeMX symbols:
+
+- `hcan1`, `MX_CAN1_Init()`
+- `huart3`, `MX_USART3_UART_Init()`
+- `MX_GPIO_Init()`
+- generated HAL headers such as `main.h`, `can.h`, `usart.h`, and `gpio.h`
 
 ## 2. PC environment
 

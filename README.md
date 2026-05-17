@@ -5,7 +5,7 @@
 ## 仓库结构
 
 ```text
-firmware/  STM32 应用层 C 代码和 CMake 目标
+firmware/  STM32 应用层 C 代码、Keil 工程和 CubeMX 配置说明
 pc/        Python 串口桥接、WebUI 和配置
 docs/      接线和配置说明
 ```
@@ -34,13 +34,13 @@ docs/      接线和配置说明
 
 ### 固件
 
-本仓库有意将固件保留为可移植的应用层，而不是提交某一个特定的 CubeMX 生成板级工程。请先生成 Robomaster C Board 支持工程，然后集成 `firmware/` 下的源码。代码要求：
+固件现在以 **Keil uVision5 (MDK-ARM) + STM32CubeMX** 为主流程：CubeMX 生成板级 HAL 工程，Keil 工程 `firmware/MDK-ARM/GM6020_Racing_Wheel.uvprojx` 负责最终构建。代码要求：
 
 - `CAN1` 用于 GM6020 总线
 - `USART3` 使用 `115200 8N1`
 - STM32 HAL 符号，例如 `hcan1`、`huart3`、`MX_CAN1_Init` 和 `MX_USART3_UART_Init`
 
-详细步骤见 `docs/setup.md`。
+CubeMX 具体配置见 `firmware/STM32CubeMX/README.md`，完整步骤见 `docs/setup.md`。
 
 ### PC 应用
 
